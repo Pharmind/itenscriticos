@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Pharmaview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">Pharmaview</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cadastro.html">Cadastro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="configuracoes.html">Configurações</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mb-5">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white">
+                <h2 class="card-title">Configurações do Sistema</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0"><i class="bi bi-moon-stars me-2"></i>Aparência</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted mb-4">Escolha o tema de exibição do sistema que mais combina com suas preferências.</p>
+                                
+                                <div class="d-flex justify-content-around">
+                                    <div class="form-check form-check-inline theme-option" onclick="setTheme('light')">
+                                        <input class="form-check-input" type="radio" name="themeOptions" id="lightTheme" value="light">
+                                        <label class="form-check-label d-block text-center" for="lightTheme">
+                                            <div class="theme-preview light-theme-preview mb-2"></div>
+                                            Modo Claro
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-check form-check-inline theme-option" onclick="setTheme('dark')">
+                                        <input class="form-check-input" type="radio" name="themeOptions" id="darkTheme" value="dark">
+                                        <label class="form-check-label d-block text-center" for="darkTheme">
+                                            <div class="theme-preview dark-theme-preview mb-2"></div>
+                                            Modo Escuro
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0"><i class="bi bi-building me-2"></i>Informações da Instituição</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted mb-4">Adicione as informações da sua instituição para personalizar os relatórios.</p>
+                                
+                                <form id="institutionForm">
+                                    <div class="mb-3">
+                                        <label for="institutionName" class="form-label">Nome da Instituição</label>
+                                        <input type="text" class="form-control" id="institutionName" placeholder="Ex: Hospital Municipal">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="institutionLogo" class="form-label">Logo da Instituição</label>
+                                        <input type="file" class="form-control" id="institutionLogo" accept="image/*">
+                                        <div class="form-text">Formatos aceitos: JPG, PNG. Tamanho máximo: 1MB.</div>
+                                    </div>
+                                    
+                                    <div class="text-center mt-4">
+                                        <div id="logoPreview" class="mb-3">
+                                            <img id="logoImage" class="img-thumbnail d-none" style="max-height: 100px;">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Salvar Configurações</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0"><i class="bi bi-person-badge me-2"></i>Responsável Técnico</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted mb-4">Defina o nome e número do CRF do farmacêutico responsável técnico para os relatórios.</p>
+                                
+                                <form id="responsavelForm">
+                                    <div class="mb-3">
+                                        <label for="responsavelNome" class="form-label">Nome Completo</label>
+                                        <input type="text" class="form-control" id="responsavelNome" placeholder="Ex: Fernando Carneiro">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="responsavelCRF" class="form-label">Número do CRF</label>
+                                        <input type="text" class="form-control" id="responsavelCRF" placeholder="Ex: CRF-XX 12345">
+                                    </div>
+                                    
+                                    <div class="text-center mt-4">
+                                        <button type="submit" class="btn btn-primary">Salvar Responsável</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0"><i class="bi bi-file-earmark-pdf me-2"></i>Prévia do PDF</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted mb-4">Veja como os seus relatórios ficarão com as configurações atuais.</p>
+                                
+                                <div class="text-center">
+                                    <div id="pdfPreview" class="border p-3 mb-3 d-inline-block">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div id="previewLogo" class="me-3">
+                                                <img id="previewLogoImage" class="img-thumbnail d-none" style="max-height: 60px;">
+                                                <div id="previewPlaceholder" class="border d-flex align-items-center justify-content-center" style="width: 100px; height: 60px;">
+                                                    <span class="text-muted">Logo</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h5 id="previewInstitutionName" class="mb-0">Nome da Instituição</h5>
+                                                <p class="text-muted mb-0">Pharmaview - Sistema de Gerenciamento Farmacêutico</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <p class="text-muted mb-0">Exemplo de conteúdo do relatório...</p>
+                                        <hr>
+                                        <p class="text-center text-muted mb-0 small">Responsável Técnico: <span id="previewResponsavel">Farmacêutico Fernando Carneiro</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 text-muted">Pharmaview &copy; 2025 | Desenvolvido por: <span class="fw-bold">Farmacêutico Fernando Carneiro</span></p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="configuracoes.js"></script>
+</body>
+</html>

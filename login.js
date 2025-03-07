@@ -58,3 +58,6 @@ function getErrorMessage(errorCode) {
             return 'Erro ao fazer login. Tente novamente.';
     }
 }
+
+// Update page title to reflect new landing page status
+document.title = "Pharmaview - Login";
